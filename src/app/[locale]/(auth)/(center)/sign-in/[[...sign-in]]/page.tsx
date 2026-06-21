@@ -24,7 +24,16 @@ export default async function SignInPage(props: SignInPageProps) {
   const { locale } = await props.params;
   setRequestLocale(locale);
 
+  const clerkAppearance = {
+    variables: {
+      colorPrimary: '#52BE80',
+      colorBackground: '#FAFAF8',
+      fontFamily: 'Space Grotesk, system-ui, sans-serif',
+      borderRadius: '12px',
+    },
+  };
+
   return (
-    <SignIn path={getI18nPath('/sign-in', locale)} />
+    <SignIn path={getI18nPath('/sign-in', locale)} appearance={clerkAppearance} />
   );
 };

@@ -19,9 +19,9 @@ export const SiteStatusCard = async () => {
 
   if (!site) {
     return (
-      <div className="rounded-xl border border-slate-200 bg-white p-6">
-        <h3 className="font-semibold text-slate-900">Estado del sitio</h3>
-        <p className="mt-2 text-sm text-slate-500">
+      <div className="rounded-2xl border border-black/10 bg-white p-6">
+        <h3 className="font-bold text-ink">Estado del sitio</h3>
+        <p className="mt-2 text-sm font-light text-ink-muted">
           {isAdmin
             ? 'No hay sitio configurado para esta organización aún.'
             : 'Tu sitio está siendo preparado. Juan estará en contacto pronto.'}
@@ -31,27 +31,26 @@ export const SiteStatusCard = async () => {
   }
 
   return (
-    <div className="rounded-xl border border-slate-200 bg-white p-6">
+    <div className="rounded-2xl border border-black/10 bg-white p-6">
       <div className="flex items-center justify-between">
-        <h3 className="font-semibold text-slate-900">Estado del sitio</h3>
+        <h3 className="font-bold text-ink">Estado del sitio</h3>
         <span
           className={`
             inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-xs
             font-medium
             ${
     site.isActive
-      ? 'bg-green-100 text-green-700'
-      : `bg-slate-100 text-slate-500`
+      ? 'bg-verde-light text-verde-dark'
+      : 'bg-cream-surface text-ink-muted'
     }
           `}
         >
-          <span
-            className={`
-              size-1.5 rounded-full
-              ${
-    site.isActive ? 'bg-green-500' : 'bg-slate-400'
-    }
-            `}
+          <span className={`
+            size-1.5 rounded-full
+            ${site.isActive
+      ? `animate-dot-pulse bg-verde`
+      : `bg-ink-hint`}
+          `}
           />
           {site.isActive ? 'Activo' : 'Inactivo'}
         </span>
@@ -62,14 +61,14 @@ export const SiteStatusCard = async () => {
         target="_blank"
         rel="noopener noreferrer"
         className="
-          mt-3 block truncate text-sm font-medium text-blue-600
-          hover:text-blue-800
+          mt-3 block truncate text-sm font-medium text-verde transition-colors
+          hover:text-verde-dark
         "
       >
         {site.url}
       </a>
 
-      <p className="mt-1 text-sm text-slate-500">
+      <p className="mt-1 text-sm font-light text-ink-muted">
         Plan:
         {' '}
         <span className="font-medium capitalize">{site.plan}</span>

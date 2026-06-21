@@ -9,29 +9,31 @@ export const Section = (props: {
 }) => (
   <div className={cn('@container px-3 py-16', props.className)}>
     {(props.title || props.subtitle || props.description) && (
-      <div className="mx-auto mb-12 max-w-3xl text-center">
+      <div className="mb-12">
         {props.subtitle && (
+          <div className="mb-4 flex items-center gap-2">
+            <span className="size-1.5 animate-dot-pulse rounded-full bg-verde" />
+            <span className="
+              text-xs font-semibold tracking-widest text-ink uppercase
+            "
+            >
+              {props.subtitle}
+            </span>
+          </div>
+        )}
+        {props.title && (
           <div className="
-            bg-linear-to-r from-indigo-500 via-purple-500 to-pink-500
-            bg-clip-text text-sm font-bold text-transparent
+            text-[clamp(26px,4vw,38px)] font-extrabold tracking-tight text-ink
           "
           >
-            {props.subtitle}
+            {props.title}
           </div>
         )}
-
-        {props.title && (
-          <div className="mt-1 text-3xl font-bold">{props.title}</div>
-        )}
-
         {props.description && (
-          <div className="mt-2 text-lg text-muted-foreground">
-            {props.description}
-          </div>
+          <div className="mt-3 max-w-md text-base font-light text-ink-muted">{props.description}</div>
         )}
       </div>
     )}
-
     <div className="mx-auto max-w-5xl">{props.children}</div>
   </div>
 );

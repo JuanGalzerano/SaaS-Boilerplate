@@ -27,10 +27,10 @@ export const ChangeRequestForm = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="rounded-xl border border-slate-200 bg-white p-6"
+      className="rounded-2xl border border-black/10 bg-white p-6"
     >
-      <h3 className="font-semibold text-slate-900">Solicitar un cambio</h3>
-      <p className="mt-1 text-sm text-slate-500">
+      <h3 className="font-bold text-ink">Solicitar un cambio</h3>
+      <p className="mt-1 text-sm font-light text-ink-muted">
         Describí qué querés actualizar en tu presencia digital.
       </p>
 
@@ -42,9 +42,9 @@ export const ChangeRequestForm = () => {
           onChange={e => setTitle(e.target.value)}
           required
           className="
-            w-full rounded-lg border border-slate-200 px-3 py-2 text-sm
+            w-full rounded-xl border border-black/10 px-3 py-2.5 text-sm
             transition-shadow outline-none
-            focus:border-blue-500 focus:ring-1 focus:ring-blue-500
+            focus:border-verde focus:ring-1 focus:ring-verde
           "
         />
         <textarea
@@ -54,9 +54,9 @@ export const ChangeRequestForm = () => {
           required
           rows={4}
           className="
-            w-full resize-none rounded-lg border border-slate-200 px-3 py-2
+            w-full resize-none rounded-xl border border-black/10 px-3 py-2.5
             text-sm transition-shadow outline-none
-            focus:border-blue-500 focus:ring-1 focus:ring-blue-500
+            focus:border-verde focus:ring-1 focus:ring-verde
           "
         />
       </div>
@@ -66,16 +66,16 @@ export const ChangeRequestForm = () => {
           type="submit"
           disabled={status === 'loading'}
           className="
-            rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white
-            transition-colors
-            hover:bg-blue-500
+            rounded-xl bg-verde px-5 py-2.5 text-sm font-medium text-white
+            transition-opacity
+            hover:opacity-90
             disabled:opacity-50
           "
         >
           {status === 'loading' ? 'Enviando...' : 'Enviar solicitud'}
         </button>
         {status === 'success' && (
-          <p className="text-sm text-green-600">¡Solicitud enviada! La revisamos en menos de 24 hs.</p>
+          <p className="text-sm text-verde-dark">¡Solicitud enviada! La revisamos en menos de 24 hs.</p>
         )}
         {status === 'error' && (
           <p className="text-sm text-red-500">Error al enviar. Intentá de nuevo.</p>

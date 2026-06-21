@@ -1,11 +1,9 @@
-import { AppConfig } from '@/utils/AppConfig';
-
 export const Logo = (props: {
   isTextHidden?: boolean;
 }) => (
-  <div className="flex items-center text-xl font-semibold">
+  <div className="flex items-center gap-2.5">
     <svg
-      className="mr-1 size-8 stroke-current stroke-2"
+      className="size-8 stroke-verde stroke-2"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
       fill="none"
@@ -18,6 +16,12 @@ export const Logo = (props: {
       <rect x="15" y="4" width="6" height="16" rx="1" />
       <path d="M4 20h14" />
     </svg>
-    {!props.isTextHidden && AppConfig.name}
+    {!props.isTextHidden && (
+      <span className="text-xl font-extrabold tracking-tight text-ink">
+        Asistencia
+        {' '}
+        <span className="text-verde">Digital</span>
+      </span>
+    )}
   </div>
 );

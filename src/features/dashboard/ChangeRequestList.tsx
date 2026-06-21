@@ -4,9 +4,9 @@ import { db } from '@/libs/DB';
 import { changeRequestSchema } from '@/models/Schema';
 
 const STATUS_CONFIG: Record<string, { label: string; className: string }> = {
-  pending: { label: 'Pendiente', className: 'bg-yellow-100 text-yellow-700' },
-  in_progress: { label: 'En progreso', className: 'bg-blue-100 text-blue-700' },
-  done: { label: 'Completado', className: 'bg-green-100 text-green-700' },
+  pending: { label: 'Pendiente', className: 'bg-amber-100 text-amber-700' },
+  in_progress: { label: 'En progreso', className: 'bg-verde-light text-verde-dark' },
+  done: { label: 'Completado', className: 'bg-verde text-white' },
 };
 
 export const ChangeRequestList = async () => {
@@ -24,9 +24,9 @@ export const ChangeRequestList = async () => {
 
   if (requests.length === 0) {
     return (
-      <div className="rounded-xl border border-slate-200 bg-white p-6">
-        <h3 className="font-semibold text-slate-900">Solicitudes anteriores</h3>
-        <p className="mt-2 text-sm text-slate-500">
+      <div className="rounded-2xl border border-black/10 bg-white p-6">
+        <h3 className="font-bold text-ink">Solicitudes anteriores</h3>
+        <p className="mt-2 text-sm font-light text-ink-muted">
           No hay solicitudes aún. Usá el formulario de arriba para pedir un cambio.
         </p>
       </div>
@@ -34,8 +34,8 @@ export const ChangeRequestList = async () => {
   }
 
   return (
-    <div className="rounded-xl border border-slate-200 bg-white p-6">
-      <h3 className="mb-4 font-semibold text-slate-900">Solicitudes anteriores</h3>
+    <div className="rounded-2xl border border-black/10 bg-white p-6">
+      <h3 className="mb-4 font-bold text-ink">Solicitudes anteriores</h3>
       <ul className="space-y-3">
         {requests.map((req) => {
           const s = STATUS_CONFIG[req.status] ?? STATUS_CONFIG.pending!;
@@ -43,13 +43,13 @@ export const ChangeRequestList = async () => {
             <li
               key={req.id}
               className="
-                flex items-start justify-between gap-3 rounded-lg bg-slate-50
-                p-3
+                flex items-start justify-between gap-3 rounded-xl
+                bg-cream-surface p-3
               "
             >
               <div className="min-w-0">
-                <p className="truncate text-sm font-medium text-slate-800">{req.title}</p>
-                <p className="mt-0.5 text-xs text-slate-400">
+                <p className="truncate text-sm font-medium text-ink">{req.title}</p>
+                <p className="mt-0.5 text-xs text-ink-hint">
                   {req.createdAt.toLocaleDateString('es-AR', {
                     day: '2-digit',
                     month: 'long',
@@ -57,11 +57,10 @@ export const ChangeRequestList = async () => {
                   })}
                 </p>
               </div>
-              <span
-                className={`
-                  shrink-0 rounded-full px-2 py-0.5 text-xs font-medium
-                  ${s.className}
-                `}
+              <span className={`
+                shrink-0 rounded-full px-2.5 py-0.5 text-xs font-medium
+                ${s.className}
+              `}
               >
                 {s.label}
               </span>
