@@ -1,54 +1,63 @@
-import { useTranslations } from 'next-intl';
-import { LocaleSwitcher } from '@/components/LocaleSwitcher';
 import { buttonVariants } from '@/components/ui/buttonVariants';
-import { CenteredMenu } from '@/features/landing/CenteredMenu';
-import { Section } from '@/features/landing/Section';
 import { Link } from '@/libs/I18nNavigation';
 import { Logo } from './Logo';
 
-export const Navbar = () => {
-  const t = useTranslations('Navbar');
+export const Navbar = () => (
+  <nav className="
+    sticky top-0 z-50 border-b border-slate-100 bg-white/95 backdrop-blur-sm
+  "
+  >
+    <div className="mx-auto flex max-w-6xl items-center justify-between p-4">
+      <Logo />
 
-  return (
-    <Section className="px-3 py-6">
-      <CenteredMenu
-        logo={<Logo />}
-        rightMenu={(
-          <>
-            <li>
-              <LocaleSwitcher />
-            </li>
-            <li className="mr-2.5 ml-1">
-              <Link href="/sign-in">{t('sign_in')}</Link>
-            </li>
-            <li>
-              <Link className={buttonVariants()} href="/sign-up">
-                {t('sign_up')}
-              </Link>
-            </li>
-          </>
-        )}
+      <div className="
+        hidden items-center gap-6 text-sm font-medium text-slate-600
+        md:flex
+      "
       >
-        <li>
-          <Link href="/sign-up">{t('product')}</Link>
-        </li>
+        <a
+          href="#servicios"
+          className="
+            transition-colors
+            hover:text-slate-900
+          "
+        >
+          Servicios
+        </a>
+        <a
+          href="#porque"
+          className="
+            transition-colors
+            hover:text-slate-900
+          "
+        >
+          ¿Por qué?
+        </a>
+        <a
+          href="#planes"
+          className="
+            transition-colors
+            hover:text-slate-900
+          "
+        >
+          Planes
+        </a>
+      </div>
 
-        <li>
-          <Link href="/sign-up">{t('pricing')}</Link>
-        </li>
-
-        <li>
-          <Link href="/sign-up">{t('docs')}</Link>
-        </li>
-
-        <li>
-          <Link href="/sign-up">{t('blog')}</Link>
-        </li>
-
-        <li>
-          <Link href="/sign-up">{t('about')}</Link>
-        </li>
-      </CenteredMenu>
-    </Section>
-  );
-};
+      <div className="flex items-center gap-3">
+        <Link
+          href="/sign-in"
+          className="
+            text-sm font-medium text-slate-600
+            hover:text-slate-900
+          "
+        >
+          Iniciar sesión
+        </Link>
+        <a href="#planes" className={buttonVariants({ size: 'sm' })}>
+          Ver planes
+        </a>
+      </div>
+    </div>
+  </nav>
+);

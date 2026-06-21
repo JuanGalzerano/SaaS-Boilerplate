@@ -1,4 +1,4 @@
-import { pgTable, serial, text, timestamp } from 'drizzle-orm/pg-core';
+import { boolean, pgTable, serial, text, timestamp } from 'drizzle-orm/pg-core';
 
 // This file defines the structure of your database tables using the Drizzle ORM.
 
@@ -23,4 +23,32 @@ export const todoSchema = pgTable('todo', {
     .$onUpdate(() => new Date())
     .notNull(),
   createdAt: timestamp('created_at', { mode: 'date' }).defaultNow().notNull(),
+});
+
+export const clientSiteSchema = pgTable('client_site', {
+  id: serial('id').primaryKey(),
+  orgId: text('org_id').notNull().unique(),
+  clientName: text('client_name').notNull(),
+  url: text('url').notNull(),
+  isActive: boolean('is_active').default(true).notNull(),
+  plan: text('plan').default('starter').notNull(),
+  createdAt: timestamp('created_at', { mode: 'date' }).defaultNow().notNull(),
+  updatedAt: timestamp('updated_at', { mode: 'date' })
+    .defaultNow()
+    .$onUpdate(() => new Date())
+    .notNull(),
+});
+
+export const changeRequestSchema = pgTable('change_request', {
+  id: serial('id').primaryKey(),
+  orgId: text('org_id').notNull(),
+  userId: text('user_id').notNull(),
+  title: text('title').notNull(),
+  description: text('description').notNull(),
+  status: text('status').default('pending').notNull(),
+  createdAt: timestamp('created_at', { mode: 'date' }).defaultNow().notNull(),
+  updatedAt: timestamp('updated_at', { mode: 'date' })
+    .defaultNow()
+    .$onUpdate(() => new Date())
+    .notNull(),
 });
