@@ -33,24 +33,6 @@ export const Navbar = () => (
         >
           Servicios
         </a>
-        <a
-          href="#porque"
-          className="
-            transition-colors
-            hover:text-ink
-          "
-        >
-          ¿Por qué?
-        </a>
-        <a
-          href="#planes"
-          className="
-            transition-colors
-            hover:text-ink
-          "
-        >
-          Planes
-        </a>
       </div>
 
       <div className="flex items-center gap-3">

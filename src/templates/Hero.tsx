@@ -46,14 +46,14 @@ export const Hero = () => (
       "
       >
         <a
-          href="#planes"
+          href="#servicios"
           className="
             inline-flex items-center justify-center rounded-full bg-ink px-7
             py-3.5 text-[15px] font-semibold text-white transition-all
             hover:-translate-y-0.5 hover:bg-[#333] hover:shadow-lg
           "
         >
-          Ver planes
+          Ver servicios
         </a>
         <a
           href={`${AppConfig.whatsapp}?text=Hola!%20Me%20gustar%C3%ADa%20consultar%20sobre%20la%20primera%20reuni%C3%B3n%20sin%20costo`}
