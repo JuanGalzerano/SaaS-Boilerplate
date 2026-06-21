@@ -15,7 +15,7 @@ async function fetchPageSpeed(url: string): Promise<Scores | null> {
   try {
     const apiUrl = new URL('https://www.googleapis.com/pagespeedonline/v5/runPagespeed');
     apiUrl.searchParams.set('url', url);
-    apiUrl.searchParams.set('strategy', 'mobile');
+    apiUrl.searchParams.set('strategy', 'desktop');
     ['performance', 'seo', 'accessibility', 'best-practices'].forEach(c =>
       apiUrl.searchParams.append('category', c),
     );
@@ -91,7 +91,7 @@ export const PageSpeedWidget = async () => {
     <div className="rounded-xl border border-slate-200 bg-white p-6">
       <div className="mb-4 flex items-center justify-between">
         <h3 className="font-semibold text-slate-900">Rendimiento del sitio</h3>
-        <span className="text-xs text-slate-400">Mobile · PageSpeed</span>
+        <span className="text-xs text-slate-400">Desktop · PageSpeed</span>
       </div>
 
       {scores
